@@ -40,6 +40,7 @@ describe("Get Statement Operation", () => {
 
         const statement1: ICreateStatementDTO = {
             user_id: user_id,
+            sender_id: user_id,
             description: "Test description",
             amount: 100,
             type: OperationType.DEPOSIT
@@ -50,6 +51,7 @@ describe("Get Statement Operation", () => {
 
         const statement2: ICreateStatementDTO = {
             user_id: user_id,
+            sender_id: user_id,
             description: "Test2 description",
             amount: 50,
             type: OperationType.WITHDRAW
@@ -76,6 +78,7 @@ describe("Get Statement Operation", () => {
 
         const statement1: ICreateStatementDTO = {
             user_id: user_id,
+            sender_id: user_id,
             description: "Test description",
             amount: 100,
             type: OperationType.DEPOSIT
@@ -102,6 +105,7 @@ describe("Get Statement Operation", () => {
 
         const statement1: ICreateStatementDTO = {
             user_id: user_id,
+            sender_id: user_id,
             description: "Test description",
             amount: 100,
             type: OperationType.DEPOSIT
