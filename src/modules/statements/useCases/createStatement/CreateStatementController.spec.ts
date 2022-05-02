@@ -87,16 +87,15 @@ describe("Create Statement", () => {
     })
 
     it("should be able to make a transfer", async () => {
-        /* Se eu adiciono esse depósito de 100, o balance fica 50100.00, ele concatena os valores ao invés de somar!
-            O teste seguinte acaba dando erro porque assume que tem balanço suficiente por causa desse erro. */
-        // await request(app)
-        //     .post("/api/v1/statements/deposit")
-        //     .set("Authorization", `bearer ${token}`)
-        //     .send({
-        //         amount: 100,
-        //         description: "Test description"
-        //     })
-            
+
+        await request(app)
+            .post("/api/v1/statements/deposit")
+            .set("Authorization", `bearer ${token}`)
+            .send({
+                amount: 90,
+                description: "Test 2 description"
+            })
+
         const user2: ICreateUserDTO = {
             name: "Test User2",
             email: "user2@test.com",

@@ -6,6 +6,12 @@ import { IGetBalanceDTO } from "../useCases/getBalance/IGetBalanceDTO";
 import { IGetStatementOperationDTO } from "../useCases/getStatementOperation/IGetStatementOperationDTO";
 import { IStatementsRepository } from "./IStatementsRepository";
 
+enum OperationType {
+  DEPOSIT = 'deposit',
+  WITHDRAW = 'withdraw',
+  TRANSFER = 'transfer'
+}
+
 export class StatementsRepository implements IStatementsRepository {
   private repository: Repository<Statement>;
 
@@ -51,10 +57,12 @@ export class StatementsRepository implements IStatementsRepository {
     });
 
     const balance = statement.reduce((acc, operation) => {
-      if (operation.user_id === user_id && (operation.type === 'deposit' || operation.type === 'transfer')) {
-        return acc + operation.amount;
+      if (operation.type === OperationType.DEPOSIT) {
+        return Number(acc) + Number(operation.amount);
+      } else if (operation.type === OperationType.TRANSFER && operation.user_id === user_id) {
+        return Number(acc) + Number(operation.amount);
       } else {
-        return acc - operation.amount;
+        return Number(acc) - Number(operation.amount);
       }
     }, 0)
 

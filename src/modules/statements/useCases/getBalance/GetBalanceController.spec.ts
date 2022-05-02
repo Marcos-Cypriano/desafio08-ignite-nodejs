@@ -44,7 +44,7 @@ describe("Get Balance", () => {
             })
 
         const balanceDTO = await request(app)
-        .get("/api/v1//statements/balance")
+        .get("/api/v1/statements/balance")
         .set("Authorization", `bearer ${token}`)
 
         expect(balanceDTO.body).toHaveProperty("balance")
